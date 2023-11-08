@@ -1,3 +1,50 @@
+# Energy CSR Comparison Table - Data Upload Spike
+
+This app is a small spike into how we can upload a TSV file into Contentful and update the fields of energy supplier entires.
+
+## Scope
+
+- check that we can extract data from a TSV field via a Contentful app
+- check that we can update different energy supplier entries via a single Contentful app
+- find out the best location for the upload app
+- find out how we can validate the changes we make to an entry without publishing it
+
+## Findings
+
+Using a page app is the most appropriate approach, as this means we do not have to create any other content types (eg Energy Supplier Table Data) to upload and store data.
+
+We don't actually need to upload the data to Contentful, we can access the data, parse it and update entries from the app. This spike reads the TSV data into memory and updates Contentful from there.
+
+Calling `entry.update()` will save the changes made to fields in an entry without publishing it.
+
+Calling `entry.update()` will either result in a successful update OR a response containing one or more validation errors.
+
+Each supplier entry will need to be fetched via the `client` and not `sdk.cma`, since you cannot call `update()` on entries returned via the `sdk.cma` object. To facilitate this, I have added the Contentful supplier id to the TSV file. This will mean some back and forth between the Policy and Energy teams to manage this process. An alternative would be to search for the supplier using `sdk.cma.entry.getMany()`, and then using the `client` to retrieve the entry object using the id.
+
+### Other considerations
+
+All the entries will need to be published at the same time, once they are all valid. Otherwise the table will contain inconsistent information. Entries can already be published in bulk via the Contentful UI, it is unclear if this app will be required to facilitate that directly.
+
+The workflow / UX is not well defined for this process, so this app just surfaces successful and erroring updates in the browser console. Consideration will need to be given to display well formed feedback using [forma36 components](https://f36.contentful.com/).
+
+This app has all the code in one component, the real app will need to break this apart into smaller, more testable units.
+
+This spike does not explore how to convert the plain text in the TSV file into well-formed rich text JSON data for upload. The requirements for this aren't defined and some thought will need to be given to whether this is required. Having things like email and telephone `<a>` tags created from flat TSV files will be quite involved, and we should be sure that this is a requirement of the uploading tool before development begins.
+
+## Running the app
+
+1. Clone the repo
+2. Create a CMA token in Contentful
+3. Add a `.env` file to the root of this app as per the `.env.example` template
+4. run `npm install` and then `npm start`
+5. log into Contentful
+6. Open the `Content Playground` > `master` environment
+7. Click `Apps` > `Upload Energy Supplier TSV`
+8. Upload one of the two `example-*.tsv` files in this repo
+9. See output in the browser console
+
+# Standard Contentful App Docs
+
 This project was bootstrapped with [Create Contentful App](https://github.com/contentful/create-contentful-app).
 
 ## Available Scripts
