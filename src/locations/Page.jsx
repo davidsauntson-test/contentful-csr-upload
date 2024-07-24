@@ -8,6 +8,9 @@ import Screen1 from "../screens/screen-1";
 import Screen0 from "../screens/screen-0";
 import Sidebar0 from "../sidebars/sidebar-0";
 import Sidebar1 from "../sidebars/sidebar-1";
+import Screen2 from "../screens/screen-2";
+import Sidebar2 from "../sidebars/sidebar-2";
+import Screen3 from "../screens/screen-3";
 
 
 const Page = () => {
@@ -18,22 +21,44 @@ const Page = () => {
 
     const renderScreen = () => {
         switch (screen) {
-            default:
             case 0:
-                return <Screen0></Screen0>
+                return <Screen0></Screen0>;
             case 1:
-                return <Screen1></Screen1>
+                return <Screen1></Screen1>;
+            case 2:
+                return <Screen2></Screen2>;
+            case 3:
+                return <Screen3></Screen3>;
+            default:
+                return <></>;
         }
     }
 
     const renderSidebar = () => {
         switch (screen) {
-            default:
             case 0:
-                return <Sidebar0></Sidebar0>
+                return <Sidebar0></Sidebar0>;
             case 1:
-                return <Sidebar1></Sidebar1>
+                return <Sidebar1></Sidebar1>;
+            case 2:
+                return <Sidebar2></Sidebar2>;
+            default:
+                return <></>;
         }
+    }
+
+    const renderButtons = () => {
+        let buttons = [];
+        for (let i = 0; i < 4; i++) {
+            buttons.push(
+                <Button size="small" onClick={() => {
+                    dispatch(setScreen(i))
+                }} marginRight="spacingM">
+                    {i}
+                </Button>
+            )
+        }
+        return buttons;
     }
 
     return (
@@ -41,16 +66,7 @@ const Page = () => {
             <Workbench.Header title="Energy CSR Upload Tool"
                               actions={
                                   <ButtonGroup variant="spaced" spacing="spacingM">
-                                      <Button size="small" onClick={() => {
-                                          dispatch(setScreen(1))
-                                      }} marginRight="spacingM">
-                                          1
-                                      </Button>
-                                      <Button size="small" onClick={() => {
-                                          dispatch(setScreen(2))
-                                      }}>
-                                          2
-                                      </Button>
+                                      {renderButtons()}
                                   </ButtonGroup>
                               }>
             </Workbench.Header>

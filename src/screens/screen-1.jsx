@@ -68,7 +68,7 @@ const Screen1 = () => {
                 </Table>
             </Box>
             <Box marginTop="spacingXl" marginBottom="spacingXl">
-                <Heading as="h2">Ranked Suppliers</Heading>
+                <Heading as="h2">Unranked Suppliers</Heading>
                 <Table>
                     <Table.Head>
                         <Table.Row>
