@@ -7,12 +7,10 @@ const Sidebar0 = () => {
 
     const sdk = useSDK();
     let env;
-
-
+    
     function delay(ms) {
         return new Promise((resolve) => setTimeout(resolve, ms));
     }
-
 
     const client = contentful.createClient({
         accessToken: process.env.REACT_APP_CMA_TOKEN,

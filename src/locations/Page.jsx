@@ -7,6 +7,7 @@ import {setScreen} from '../redux/screenSlice'
 import Screen1 from "../screens/screen-1";
 import Screen0 from "../screens/screen-0";
 import Sidebar0 from "../sidebars/sidebar-0";
+import Sidebar1 from "../sidebars/sidebar-1";
 
 
 const Page = () => {
@@ -19,9 +20,9 @@ const Page = () => {
         switch (screen) {
             default:
             case 0:
-                return (<Screen0></Screen0>)
+                return <Screen0></Screen0>
             case 1:
-                return (<Screen1></Screen1>)
+                return <Screen1></Screen1>
         }
     }
 
@@ -29,7 +30,9 @@ const Page = () => {
         switch (screen) {
             default:
             case 0:
-                return (<Sidebar0></Sidebar0>)
+                return <Sidebar0></Sidebar0>
+            case 1:
+                return <Sidebar1></Sidebar1>
         }
     }
 
