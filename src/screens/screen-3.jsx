@@ -57,7 +57,7 @@ const Screen3 = () => {
             case "draft":
                 return <Badge variant="positive">Published</Badge>
             case "published":
-                return <Badge variant="secondary">Archived</Badge>
+                return <Badge variant="warning">Draft</Badge>
         }
     }
 
@@ -69,6 +69,7 @@ const Screen3 = () => {
                     entry</TextLink></Table.Cell>
                 <Table.Cell>{renderStatus(entry.status)}</Table.Cell>
                 <Table.Cell>{renderFutureStatus(entry.status)}</Table.Cell>
+                <Table.Cell>CSR Upload Tool</Table.Cell>
             </Table.Row>
         ))
     };
@@ -86,6 +87,7 @@ const Screen3 = () => {
                             <Table.Cell>Action</Table.Cell>
                             <Table.Cell>Current Status</Table.Cell>
                             <Table.Cell>Status after scheduled events</Table.Cell>
+                            <Table.Cell>Last changed by</Table.Cell>
                         </Table.Row>
                     </Table.Head>
                     <Table.Body>
@@ -104,6 +106,7 @@ const Screen3 = () => {
                             <Table.Cell>Action</Table.Cell>
                             <Table.Cell>Current Status</Table.Cell>
                             <Table.Cell>Status after scheduled events</Table.Cell>
+                            <Table.Cell>Last changed by</Table.Cell>
                         </Table.Row>
                     </Table.Head>
                     <Table.Body>

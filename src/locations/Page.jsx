@@ -11,6 +11,7 @@ import Sidebar1 from "../sidebars/sidebar-1";
 import Screen2 from "../screens/screen-2";
 import Sidebar2 from "../sidebars/sidebar-2";
 import Screen3 from "../screens/screen-3";
+import Sidebar3 from "../sidebars/sidebar-3";
 
 
 const Page = () => {
@@ -42,6 +43,8 @@ const Page = () => {
                 return <Sidebar1></Sidebar1>;
             case 2:
                 return <Sidebar2></Sidebar2>;
+            case 3:
+                return <Sidebar3></Sidebar3>;
             default:
                 return <></>;
         }

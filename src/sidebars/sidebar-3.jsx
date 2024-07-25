@@ -1,20 +1,50 @@
-import React from 'react';
-import {Badge, Box, Button, List, ListItem, Paragraph} from "@contentful/f36-components";
-import {useDispatch} from "react-redux";
-import {setScreen} from "../redux/screenSlice";
+import React, {useState} from 'react';
+import {
+    Badge,
+    Box,
+    Button,
+    List,
+    ListItem,
+    Paragraph,
+    SectionHeading,
+    Subheading,
+    TextInput,
+    Datepicker, Stack, DateTime
+} from "@contentful/f36-components";
+import {ClockIcon} from "@contentful/f36-icons";
 
 const Sidebar3 = () => {
-    const dispatch = useDispatch();
+    const [selectedDay, setSelectedDay] = useState(new Date());
+    const [time, setTime] = useState("00:01")
+
+    const scheduledTime = () => {
+        const [hours, minutes] = time.split(":");
+        return new Date(selectedDay.setHours(hours, minutes)).toISOString();
+    }
+
     return (
         <>
-            <Box>
-                <Paragraph marginBottom="spacingM"></Paragraph>
-            </Box>
-            <Paragraph marginTop="spacingM">Nothing will be published or archived</Paragraph>
+            <SectionHeading>SCHEDULE PUBLISH / UNPUBLISH</SectionHeading>
             <Box marginTop="spacingM">
-                <Button variant="primary" onClick={() => {
-                    dispatch(setScreen(3))
-                }}>Process suppliers</Button>
+                <Paragraph marginBottom="spacingM">After the event happens:</Paragraph>
+                <List>
+                    <ListItem><b>20</b> suppliers will be <Badge variant="positive">Published</Badge></ListItem>
+                    <ListItem><b>3</b> suppliers will be <Badge variant="warning">Unpublished</Badge></ListItem>
+                </List>
+            </Box>
+            <Box marginTop="spacingM">
+                <Subheading marginBottom="spacingM">Schedule the event</Subheading>
+                <Stack flexDirection="column">
+                    <Datepicker selected={selectedDay} onSelect={setSelectedDay}/>
+                    <TextInput value="00:01"
+                               type="text"
+                               placeholder="00:01"
+                               onChange={(e) => setTime(e.target.value)}></TextInput>
+                    <Paragraph>Publishing / unpublishing will happen on <DateTime date={scheduledTime()}/></Paragraph>
+                    <Button startIcon={<ClockIcon/>} variant="primary">
+                        Schedule Update
+                    </Button>
+                </Stack>
             </Box>
         </>
     )
