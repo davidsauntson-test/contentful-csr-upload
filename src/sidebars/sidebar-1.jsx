@@ -15,7 +15,7 @@ const Sidebar1 = () => {
                 <ListItem>suppliers in the spreadsheet that are not in Contentful</ListItem>
                 <ListItem>suppliers in Contentful that are not in the spreadsheet</ListItem>
             </List>
-            <Paragraph>Nothing will be changed in Contentful yet.</Paragraph>
+            <Paragraph marginTop="spacingM">Nothing will be changed in Contentful yet.</Paragraph>
             <Button variant="primary" onClick={() => {
                 dispatch(setScreen(2))
             }}>Match suppliers</Button>

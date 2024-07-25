@@ -7,9 +7,9 @@ import {
     Badge,
     Card,
     Stack,
-    EntryCard, TextLink, EntityStatusBadge
+    EntryCard, TextLink, EntityStatusBadge, Text
 } from "@contentful/f36-components";
-import {CloseIcon, DoneIcon} from "@contentful/f36-icons";
+import {CloseIcon, DoneIcon, ErrorCircleIcon} from "@contentful/f36-icons";
 import {useSDK} from "@contentful/react-apps-toolkit";
 
 const Screen3 = () => {
@@ -17,12 +17,13 @@ const Screen3 = () => {
     const sdk = useSDK();
 
     const changedEntries = () => {
-        return Array.from({length: 21}, (_, index) => {
+        return Array.from({length: 9}, (_, index) => {
             return {
                 name: `Energy supplier ${index}`,
                 url: `https://app.contentful.com/spaces/j9d3gn48j4iu/entries/${index}`,
                 id: index,
-                status: index % 3 === 0 ? "draft" : "changed"
+                status: index % 3 === 0 ? "draft" : "changed",
+                hasErrors: index % 11 === 0
             }
         });
     }
@@ -38,18 +39,6 @@ const Screen3 = () => {
         });
     }
 
-    const renderStatus = (status) => {
-        switch (status) {
-            default:
-            case "changed":
-                return <EntityStatusBadge entityStatus="changed"/>
-            case "draft":
-                return <Badge variant="warning">Draft</Badge>
-            case "published":
-                return <Badge variant="positive">Published</Badge>
-        }
-    }
-
     const renderFutureStatus = (status) => {
         switch (status) {
             default:
@@ -61,15 +50,37 @@ const Screen3 = () => {
         }
     }
 
-    const rows = (entries) => {
+    const renderResult = (entry) => {
+        if (entry.hasErrors) {
+            return (
+                <Stack flexDirection="row" alignItems="center">
+                    <ErrorCircleIcon variant="negative"/>
+                    <TextLink variant="negative" href={entry.url}>Errors during update</TextLink>
+                </Stack>
+            )
+        } else {
+            return (<DoneIcon variant="positive"/>)
+        }
+    }
+
+    const rows = (entries, showResult: false) => {
         return entries.map((entry, _) => (
             <Table.Row>
-                <Table.Cell>{entry.name}</Table.Cell>
-                <Table.Cell><TextLink variant="primary" href={entry.url} target="_blank">View
+                <Table.Cell style={entry.hasErrors ? {backgroundColor: "#FFF2F2"} : {}}>{entry.name}</Table.Cell>
+                <Table.Cell style={entry.hasErrors ? {backgroundColor: "#FFF2F2"} : {}}><TextLink variant="primary"
+                                                                                                  href={entry.url}
+                                                                                                  target="_blank">View
                     entry</TextLink></Table.Cell>
-                <Table.Cell><EntityStatusBadge entityStatus={entry.status}/></Table.Cell>
-                <Table.Cell>{renderFutureStatus(entry.status)}</Table.Cell>
-                <Table.Cell>CSR Upload Tool</Table.Cell>
+                <Table.Cell style={entry.hasErrors ? {backgroundColor: "#FFF2F2"} : {}}><EntityStatusBadge
+                    entityStatus={entry.status}/></Table.Cell>
+                <Table.Cell
+                    style={entry.hasErrors ? {backgroundColor: "#FFF2F2"} : {}}>{renderFutureStatus(entry.status)}</Table.Cell>
+                <Table.Cell style={entry.hasErrors ? {backgroundColor: "#FFF2F2"} : {}}>CSR Upload Tool</Table.Cell>
+                {showResult ?
+                    <Table.Cell
+                        style={entry.hasErrors ? {backgroundColor: "#FFF2F2"} : {}}>{renderResult(entry)}</Table.Cell>
+                    : null
+                }
             </Table.Row>
         ))
     };
@@ -88,10 +99,11 @@ const Screen3 = () => {
                             <Table.Cell>Current Status</Table.Cell>
                             <Table.Cell>Status after scheduled events</Table.Cell>
                             <Table.Cell>Last changed by</Table.Cell>
+                            <Table.Cell>Result</Table.Cell>
                         </Table.Row>
                     </Table.Head>
                     <Table.Body>
-                        {rows(changedEntries())}
+                        {rows(changedEntries(), true)}
                     </Table.Body>
                 </Table>
             </Box>
@@ -110,7 +122,7 @@ const Screen3 = () => {
                         </Table.Row>
                     </Table.Head>
                     <Table.Body>
-                        {rows(missingEntries())}
+                        {rows(missingEntries(), false)}
                     </Table.Body>
                 </Table>
             </Box>
