@@ -7,7 +7,7 @@ import {
     Badge,
     Card,
     Stack,
-    EntryCard, TextLink
+    EntryCard, TextLink, EntityStatusBadge
 } from "@contentful/f36-components";
 import {CloseIcon, DoneIcon} from "@contentful/f36-icons";
 import {useSDK} from "@contentful/react-apps-toolkit";
@@ -42,7 +42,7 @@ const Screen3 = () => {
         switch (status) {
             default:
             case "changed":
-                return <Badge variant="primary">Changed</Badge>
+                return <EntityStatusBadge entityStatus="changed"/>
             case "draft":
                 return <Badge variant="warning">Draft</Badge>
             case "published":
@@ -55,7 +55,7 @@ const Screen3 = () => {
             default:
             case "changed":
             case "draft":
-                return <Badge variant="positive">Published</Badge>
+                return <EntityStatusBadge entityStatus="changed" isScheduled/>
             case "published":
                 return <Badge variant="warning">Draft</Badge>
         }
@@ -67,7 +67,7 @@ const Screen3 = () => {
                 <Table.Cell>{entry.name}</Table.Cell>
                 <Table.Cell><TextLink variant="primary" href={entry.url} target="_blank">View
                     entry</TextLink></Table.Cell>
-                <Table.Cell>{renderStatus(entry.status)}</Table.Cell>
+                <Table.Cell><EntityStatusBadge entityStatus={entry.status}/></Table.Cell>
                 <Table.Cell>{renderFutureStatus(entry.status)}</Table.Cell>
                 <Table.Cell>CSR Upload Tool</Table.Cell>
             </Table.Row>

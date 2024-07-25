@@ -9,7 +9,7 @@ import {
     SectionHeading,
     Subheading,
     TextInput,
-    Datepicker, Stack, DateTime
+    Datepicker, Stack, DateTime, EntityStatusBadge
 } from "@contentful/f36-components";
 import {ClockIcon} from "@contentful/f36-icons";
 
@@ -28,7 +28,8 @@ const Sidebar3 = () => {
             <Box marginTop="spacingM">
                 <Paragraph marginBottom="spacingM">After the event happens:</Paragraph>
                 <List>
-                    <ListItem><b>20</b> suppliers will be <Badge variant="positive">Published</Badge></ListItem>
+                    <ListItem><b>20</b> suppliers will be <EntityStatusBadge entityStatus="changed"
+                                                                             isScheduled/></ListItem>
                     <ListItem><b>3</b> suppliers will be <Badge variant="warning">Unpublished</Badge></ListItem>
                 </List>
             </Box>

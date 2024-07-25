@@ -1,4 +1,4 @@
-import {Box, Heading, Table} from "@contentful/f36-components";
+import {Box, Heading, Table, List, ListItem, Paragraph} from "@contentful/f36-components";
 
 const Screen1 = () => {
 
@@ -37,7 +37,8 @@ const Screen1 = () => {
     return (
         <>
             <Box marginTop="spacingXl" marginBottom="spacingXl">
-                <Heading as="h2">Ranked Suppliers</Heading>
+                <Paragraph>These are the suppliers found in the uploaded file.</Paragraph>
+                <Heading as="h3">Ranked Suppliers</Heading>
                 <Table>
                     <Table.Head>
                         <Table.Row>
@@ -68,25 +69,18 @@ const Screen1 = () => {
                 </Table>
             </Box>
             <Box marginTop="spacingXl" marginBottom="spacingXl">
-                <Heading as="h2">Unranked Suppliers</Heading>
-                <Table>
-                    <Table.Head>
-                        <Table.Row>
-                            <Table.Cell>Supplier</Table.Cell>
-                        </Table.Row>
-                    </Table.Head>
-                    <Table.Body>
-                        {
-                            unrankedSuppliers().map((s) => {
-                                return (
-                                    <Table.Row>
-                                        <Table.Cell>{s.name}</Table.Cell>
-                                    </Table.Row>
-                                )
-                            })
-                        }
-                    </Table.Body>
-                </Table>
+                <Heading as="h3">Unranked Suppliers</Heading>
+                <List>
+                    {
+                        unrankedSuppliers().map((s) => {
+                            return (
+                                <ListItem>
+                                    {s.name}
+                                </ListItem>
+                            )
+                        })
+                    }
+                </List>
             </Box>
         </>
     )
