@@ -3,18 +3,12 @@ import {
     Paragraph,
     Heading,
     Table,
-    MissingContent,
-    Badge,
-    Card,
     Stack,
-    EntryCard, TextLink, EntityStatusBadge, Text
+    TextLink, EntityStatusBadge
 } from "@contentful/f36-components";
-import {CloseIcon, DoneIcon, ErrorCircleIcon} from "@contentful/f36-icons";
-import {useSDK} from "@contentful/react-apps-toolkit";
+import {DoneIcon, ErrorCircleIcon} from "@contentful/f36-icons";
 
 const Screen3 = () => {
-
-    const sdk = useSDK();
 
     const changedEntries = () => {
         return Array.from({length: 9}, (_, index) => {
@@ -44,9 +38,9 @@ const Screen3 = () => {
             default:
             case "changed":
             case "draft":
-                return <EntityStatusBadge entityStatus="changed" isScheduled/>
+                return <EntityStatusBadge entityStatus="published"/>
             case "published":
-                return <Badge variant="warning">Draft</Badge>
+                return <EntityStatusBadge entityStatus="draft"/>
         }
     }
 

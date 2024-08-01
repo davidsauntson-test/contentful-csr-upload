@@ -1,6 +1,7 @@
 import {Box, Heading, Paragraph, Table, TextInput} from "@contentful/f36-components";
 import * as contentful from "contentful-management";
 import Papa from "papaparse";
+import React from 'react';
 
 const Screen0 = () => {
 

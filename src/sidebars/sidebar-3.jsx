@@ -28,9 +28,8 @@ const Sidebar3 = () => {
             <Box marginTop="spacingM">
                 <Paragraph marginBottom="spacingM">After the event happens:</Paragraph>
                 <List>
-                    <ListItem><b>20</b> suppliers will be <EntityStatusBadge entityStatus="changed"
-                                                                             isScheduled/></ListItem>
-                    <ListItem><b>3</b> suppliers will be <Badge variant="warning">Unpublished</Badge></ListItem>
+                    <ListItem><b>20</b> suppliers will be <EntityStatusBadge entityStatus="published"/></ListItem>
+                    <ListItem><b>3</b> suppliers will be <Badge variant="warning">Draft</Badge></ListItem>
                 </List>
             </Box>
             <Box marginTop="spacingM">

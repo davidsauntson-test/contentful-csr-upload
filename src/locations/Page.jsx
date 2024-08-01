@@ -54,9 +54,9 @@ const Page = () => {
         let buttons = [];
         for (let i = 0; i < 4; i++) {
             buttons.push(
-                <Button size="small" onClick={() => {
+                <Button marginRight="spacingM" size="small" onClick={() => {
                     dispatch(setScreen(i))
-                }} marginRight="spacingM">
+                }}>
                     {i}
                 </Button>
             )
