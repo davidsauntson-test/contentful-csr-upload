@@ -1,0 +1,44 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: '/'
+    schedule:
+      interval: weekly
+    groups:
+      react-dependencies:
+        patterns:
+          - 'react*'
+          - 'preact*'
+          - '@testing-library/react'
+          - '@babel/react'
+        update-types:
+          - 'minor'
+          - 'patch'
+      major-react-dependencies:
+        patterns:
+          - 'react*'
+          - 'preact*'
+          - '@testing-library/react'
+        update-types:
+          - 'major'
+      testing-dependencies:
+        patterns:
+          - '@testing-library/*'
+          - '@typescript-eslint/*'
+          - 'eslint*'
+          - 'jest*'
+          - 'prettier'
+          - 'stylelint*'
+        update-types:
+          - 'major'
+          - 'minor'
+          - 'patch'
+      # everything else
+      js-dependencies:
+        patterns:
+          - '*'
+        update-types:
+          - 'patch'
+          - 'minor'
+      # anything not caught be these groups above will be a major non-testing, non-react js update and should be raised in its own PR
+    target-branch: 'main'
