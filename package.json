@@ -8,14 +8,15 @@
     "@contentful/f36-tokens": "4.0.5",
     "@contentful/react-apps-toolkit": "1.2.16",
     "contentful-management": "10.46.4",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.3.3",
     "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "prettier": "^3.3.3"
+    "react-dom": "18.3.1"
   },
   "scripts": {
     "start": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint",
+    "lint": "eslint .",
     "create-app-definition": "contentful-app-scripts create-app-definition",
     "upload": "contentful-app-scripts upload --bundle-dir ./dist",
     "upload-ci": "contentful-app-scripts upload --ci --bundle-dir ./dist --organization-id $CONTENTFUL_ORG_ID --definition-id $CONTENTFUL_APP_DEF_ID --token $CONTENTFUL_ACCESS_TOKEN"
