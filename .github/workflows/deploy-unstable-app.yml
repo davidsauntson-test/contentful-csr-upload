@@ -25,6 +25,7 @@ jobs:
 
   deploy:
     runs-on: unbuntu-latest
+    needs: build
     environment:
       name: unstable
     steps:
