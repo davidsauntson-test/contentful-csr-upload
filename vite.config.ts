@@ -9,5 +9,7 @@ export default defineConfig(() => ({
   plugins: [react()],
   test: {
     environment: "happy-dom",
+    include: ["src/**/*.spec.jsx"],
+    exclude: ["node_modules/", "dist/"],
   },
 }));
