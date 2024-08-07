@@ -21,10 +21,15 @@
     "lint:fix": "prettier -w . && npm run lint:js -- --fix",
     "create-app-definition": "contentful-app-scripts create-app-definition",
     "upload": "contentful-app-scripts upload --bundle-dir ./dist",
-    "upload-ci": "contentful-app-scripts upload --ci --bundle-dir ./dist --organization-id $CONTENTFUL_ORG_ID --definition-id $CONTENTFUL_APP_DEF_ID --token $CONTENTFUL_ACCESS_TOKEN"
+    "upload-ci": "contentful-app-scripts upload --ci --bundle-dir ./dist --organization-id $CONTENTFUL_ORG_ID --definition-id $CONTENTFUL_APP_DEF_ID --token $CONTENTFUL_ACCESS_TOKEN",
+    "prepare": "husky"
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": "npm run lint:js -- --fix",
+    "*": "prettier --ignore-unknown --write"
   },
   "browserslist": {
     "production": [
@@ -46,6 +51,8 @@
     "cross-env": "7.0.3",
     "eslint": "^8.57.0",
     "eslint-config-react-app": "^7.0.1",
+    "husky": "^9.1.4",
+    "lint-staged": "^15.2.8",
     "typescript": "4.8.2",
     "vite": "4.5.3"
   },
