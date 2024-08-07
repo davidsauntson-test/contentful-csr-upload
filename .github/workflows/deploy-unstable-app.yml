@@ -25,9 +25,8 @@ jobs:
 
   deploy:
     runs-on: unbuntu-latest
-    needs: build
-    environment:
-      name: unstable
+    needs:
+      - build
     steps:
       - name: Deploy
         run: npm run upload-ci -- --comment "Deployed by GitHub ${GITHUB_SHA}"
