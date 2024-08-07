@@ -1,9 +1,6 @@
 name: Deploy stable app
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
   workflow_run:
     workflows: ["Deploy unstable app"]
     types:
