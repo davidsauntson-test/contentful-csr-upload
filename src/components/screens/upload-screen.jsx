@@ -3,9 +3,10 @@ import React from "react";
 import { Box, Heading, Paragraph } from "@contentful/f36-components";
 import { useSDK } from "@contentful/react-apps-toolkit";
 import UploadFile from "../UploadFile";
+import { useSelector } from "react-redux";
 
 const UploadScreen = () => {
-  const sdk = useSDK();
+  const supplierCount = useSelector((state) => state.suppliers.value.length);
 
   return (
     <Box marginTop="spacingL" marginBottom="spacingXl">
@@ -15,6 +16,11 @@ const UploadScreen = () => {
         the energy data spreadsheet.
       </Paragraph>
       <UploadFile></UploadFile>
+      {supplierCount > 0 ? (
+        <Paragraph marginTop="spacingM">
+          Found {supplierCount} suppliers
+        </Paragraph>
+      ) : null}
     </Box>
   );
 };
