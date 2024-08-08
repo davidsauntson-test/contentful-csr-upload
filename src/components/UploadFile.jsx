@@ -1,6 +1,6 @@
 import React from "react";
 import Papa from "papaparse";
-import { TextInput } from "@contentful/f36-components";
+import { FormControl, TextInput } from "@contentful/f36-components";
 import { useDispatch } from "react-redux";
 
 import normalizeSupplier from "../helpers/normalizeSupplier";
@@ -26,11 +26,10 @@ const UploadFile = () => {
   };
 
   return (
-    <TextInput
-      type="file"
-      name="Choose a tsv file"
-      onChange={(e) => changeHandler(e)}
-    />
+    <FormControl>
+      <FormControl.Label>Choose a .tsv file</FormControl.Label>
+      <TextInput type="file" onChange={(e) => changeHandler(e)} />
+    </FormControl>
   );
 };
 

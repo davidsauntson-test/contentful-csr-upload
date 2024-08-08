@@ -1,9 +1,8 @@
 import React from "react";
-
 import { Box, Heading, Paragraph } from "@contentful/f36-components";
-import { useSDK } from "@contentful/react-apps-toolkit";
-import UploadFile from "../UploadFile";
 import { useSelector } from "react-redux";
+
+import UploadFile from "../UploadFile";
 
 const UploadScreen = () => {
   const supplierCount = useSelector((state) => state.suppliers.value.length);

@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Workbench } from "@contentful/f36-workbench";
-import UploadScreen from "../components/screens/upload-screen";
+import UploadScreen from "../components/screens/UploadScreen";
 import * as Screens from "../constants/screens";
 
 const Page = () => {
