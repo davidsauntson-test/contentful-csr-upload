@@ -1,0 +1,16 @@
+{
+  "decisions": {
+    "1098582|@contentful/app-scripts>contentful-management>axios": {
+      "decision": "ignore",
+      "madeAt": 1723545683541,
+      "expiresAt": 1724150451234
+    },
+    "1098582|contentful-management>axios": {
+      "decision": "ignore",
+      "madeAt": 1723545683541,
+      "expiresAt": 1724150451234
+    }
+  },
+  "rules": {},
+  "version": 1
+}

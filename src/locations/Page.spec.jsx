@@ -1,4 +1,3 @@
-import { getByRole, getDefaultNormalizer } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { mockCma, mockSdk } from "../../test/mocks";
 import Page from "./Page";
@@ -10,12 +9,12 @@ vi.mock("@contentful/react-apps-toolkit", () => ({
 }));
 
 describe("Page component", () => {
-  it("Component text exists", () => {
+  it("displays the upload file screen on app load", () => {
     const { getByRole } = renderWithProvider(<Page />);
 
     expect(
-      getByRole("paragraph", {
-        text: /Hello Page Component (AppId: test-app)/,
+      getByRole("heading", {
+        name: "Upload the data file",
       }),
     ).toBeTruthy();
   });
