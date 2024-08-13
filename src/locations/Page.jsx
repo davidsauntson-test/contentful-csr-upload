@@ -1,16 +1,16 @@
 import React from "react";
-import { Paragraph } from "@contentful/f36-components";
-import { /* useCMA, */ useSDK } from "@contentful/react-apps-toolkit";
+import { useSelector } from "react-redux";
+import UploadScreen from "../components/screens/upload-screen";
+import * as Screens from "../constants/screens";
 
 const Page = () => {
-  const sdk = useSDK();
-  /*
-     To use the cma, inject it as follows.
-     If it is not needed, you can remove the next line.
-  */
-  // const cma = useCMA();
+  const screen = useSelector((state) => state.screen.value);
 
-  return <Paragraph>Hello Page Component (AppId: {sdk.ids.app})</Paragraph>;
+  switch (screen) {
+    case Screens.UPLOAD:
+    default:
+      return <UploadScreen></UploadScreen>;
+  }
 };
 
 export default Page;

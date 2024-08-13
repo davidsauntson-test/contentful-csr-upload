@@ -7,9 +7,11 @@
     "@contentful/f36-components": "4.67.4",
     "@contentful/f36-tokens": "4.0.5",
     "@contentful/react-apps-toolkit": "1.2.16",
+    "@reduxjs/toolkit": "^2.2.7",
     "contentful-management": "11.31.1",
     "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react-dom": "18.3.1",
+    "react-redux": "^9.1.2"
   },
   "scripts": {
     "start": "vite",
@@ -48,13 +50,13 @@
     "@vitejs/plugin-react": "4.3.1",
     "cross-env": "7.0.3",
     "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-config-react-app": "^7.0.1",
     "happy-dom": "^14.12.3",
     "husky": "^9.1.4",
     "lint-staged": "^15.2.8",
-    "vite": "4.5.3",
-    "eslint-config-prettier": "^9.1.0",
     "prettier": "^3.3.3",
+    "vite": "4.5.3",
     "vitest": "^2.0.5"
   },
   "homepage": "."
