@@ -3,9 +3,11 @@ import { Box, Heading, Paragraph } from "@contentful/f36-components";
 import { useSelector } from "react-redux";
 
 import UploadFile from "../UploadFile";
+import UploadErrors from "../UploadErrors";
 
 const UploadScreen = () => {
   const supplierCount = useSelector((state) => state.suppliers.value.length);
+  const uploadErrors = useSelector((state) => state.uploadErrors.value);
 
   return (
     <Box marginTop="spacingL" marginBottom="spacingXl">
@@ -20,6 +22,8 @@ const UploadScreen = () => {
           Found {supplierCount} suppliers
         </Paragraph>
       ) : null}
+
+      {uploadErrors.length > 0 ? <UploadErrors errors={uploadErrors} /> : null}
     </Box>
   );
 };
