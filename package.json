@@ -58,6 +58,7 @@
     "happy-dom": "^14.12.3",
     "husky": "^9.1.4",
     "lint-staged": "^15.2.8",
+    "npm-audit-resolver": "^3.0.0-RC.0",
     "prettier": "^3.3.3",
     "vite": "4.5.3",
     "vitest": "^2.0.5"

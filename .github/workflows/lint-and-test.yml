@@ -40,7 +40,7 @@ jobs:
         uses: bahmutov/npm-install@v1
 
       - name: Audit
-        run: npm audit
+        run: npx check-audit
 
   test:
     runs-on: ubuntu-latest
