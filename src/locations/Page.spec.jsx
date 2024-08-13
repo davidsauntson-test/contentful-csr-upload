@@ -1,4 +1,3 @@
-import { getByRole, getDefaultNormalizer } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { mockCma, mockSdk } from "../../test/mocks";
 import Page from "./Page";
