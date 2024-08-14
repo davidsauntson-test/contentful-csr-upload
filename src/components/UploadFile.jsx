@@ -6,6 +6,8 @@ import { useDispatch } from "react-redux";
 import normalizeSupplier from "../helpers/normalizeSupplier";
 import { addSupplier, resetSuppliers } from "../state/supplierSlice";
 import { setErrors, resetErrors } from "../state/uploadErrorsSlice";
+import { setAppStatus } from "../state/appStatusSlice";
+import { PARSING_FINISHED } from "../constants/app-status";
 
 const UploadFile = () => {
   const dispatch = useDispatch();
@@ -25,6 +27,7 @@ const UploadFile = () => {
         });
 
         dispatch(setErrors(results.errors));
+        dispatch(setAppStatus(PARSING_FINISHED));
       },
     });
   };
