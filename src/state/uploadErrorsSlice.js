@@ -8,7 +8,7 @@ export const uploadErrorsSlice = createSlice({
   name: "uploadErrors",
   initialState,
   reducers: {
-    addErrors: (state, action) => {
+    setErrors: (state, action) => {
       state.value = action.payload.map(
         (error) => `Row ${error.row} - ${error.message}`,
       );
@@ -20,6 +20,6 @@ export const uploadErrorsSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { addErrors, resetErrors } = uploadErrorsSlice.actions;
+export const { setErrors, resetErrors } = uploadErrorsSlice.actions;
 
 export default uploadErrorsSlice.reducer;
