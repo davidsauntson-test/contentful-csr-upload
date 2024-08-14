@@ -2,11 +2,13 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
 import screenReducer from "./state/screenSlice";
 import suppliersReducer from "./state/supplierSlice";
+import uploadErrorsReducer from "./state/uploadErrorsSlice";
 
 // Create the root reducer separately so we can extract the RootState type
 const rootReducer = combineReducers({
   screen: screenReducer,
   suppliers: suppliersReducer,
+  uploadErrors: uploadErrorsReducer,
 });
 
 export const setupStore = (preloadedState) => {

@@ -5,12 +5,14 @@ import { useDispatch } from "react-redux";
 
 import normalizeSupplier from "../helpers/normalizeSupplier";
 import { addSupplier, resetSuppliers } from "../state/supplierSlice";
+import { setErrors, resetErrors } from "../state/uploadErrorsSlice";
 
 const UploadFile = () => {
   const dispatch = useDispatch();
 
   const changeHandler = (event) => {
     dispatch(resetSuppliers());
+    dispatch(resetErrors());
 
     Papa.parse(event.target.files[0], {
       header: true,
@@ -21,6 +23,8 @@ const UploadFile = () => {
           const supplier = normalizeSupplier(row);
           dispatch(addSupplier(supplier));
         });
+
+        dispatch(setErrors(results.errors));
       },
     });
   };
