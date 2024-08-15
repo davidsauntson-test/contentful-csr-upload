@@ -4,6 +4,7 @@ import { Workbench } from "@contentful/f36-workbench";
 import UploadScreen from "../components/screens/UploadScreen";
 import * as Screens from "../constants/screens";
 import UploadSidebar from "../components/sidebars/UploadSidebar";
+import MatchScreen from "../components/screens/MatchScreen";
 
 const Page = () => {
   const screen = useSelector((state) => state.screen.value);
@@ -13,6 +14,8 @@ const Page = () => {
       case Screens.UPLOAD:
       default:
         return <UploadScreen></UploadScreen>;
+      case Screens.MATCH:
+        return <MatchScreen></MatchScreen>;
     }
   };
 

@@ -1,3 +1,5 @@
+import { PARSED } from "../constants/supplier-status";
+
 const normalizeSupplier = (row) => {
   return {
     id: row["SupplierId"],
@@ -18,6 +20,7 @@ const normalizeSupplier = (row) => {
     billingInfo: row["billingInformation"],
     openingHours: row["openingHours"],
     fuelMix: row["fuelMix"],
+    status: PARSED,
   };
 };
 
