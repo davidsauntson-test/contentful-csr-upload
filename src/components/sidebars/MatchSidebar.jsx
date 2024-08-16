@@ -10,11 +10,15 @@ import { setScreen } from "../../state/screenSlice";
 import { PROCESS } from "../../constants/screens";
 import { useDispatch } from "react-redux";
 import React from "react";
+import { setAppStatus } from "../../state/appStatusSlice";
+import * as AppStatus from "../../constants/app-status";
 
 const MatchSidebar = () => {
   const dispatch = useDispatch();
 
   const clickHandler = () => {
+    dispatch(setAppStatus(AppStatus.FETCHING_CONTENTFUL_SUPPLIERS));
+    console.log("matching requested");
     dispatch(setScreen(PROCESS));
   };
 
