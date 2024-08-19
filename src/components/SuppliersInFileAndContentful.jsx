@@ -9,15 +9,12 @@ import {
   Table,
 } from "@contentful/f36-components";
 import { nanoid } from "nanoid";
+import { getType } from "../helpers/getType";
 
 const SuppliersInFileAndContentful = () => {
   const suppliersInFileAndContentful = useSelector(
     getMatchedSuppliersInContentful,
   );
-
-  const getType = (isSmall) => {
-    return isSmall ? "small" : "ranked";
-  };
 
   const renderMatchedSuppliers = () => {
     return (

@@ -9,13 +9,10 @@ import {
   Table,
 } from "@contentful/f36-components";
 import { nanoid } from "nanoid";
+import { getType } from "../helpers/getType";
 
 const SuppliersNotInContentful = () => {
   const suppliersNotInContentful = useSelector(getSuppliersNotInContentful);
-
-  const getType = (isSmall) => {
-    return isSmall ? "small" : "ranked";
-  };
 
   const renderSuppliersToBeCreated = () => {
     return (
@@ -45,7 +42,10 @@ const SuppliersNotInContentful = () => {
       <Heading as="h2">Suppliers to be created</Heading>
       <Paragraph marginBottom="spacingL">
         These suppliers are in the spreadsheet but cannot be found in Contentful
-        - they will be created and set to <Badge variant="warning">Draft</Badge>
+        - they will be created and set to{" "}
+        <Badge as="span" variant="warning">
+          Draft
+        </Badge>
       </Paragraph>
       {suppliersNotInContentful && suppliersNotInContentful.length > 0 ? (
         renderSuppliersToBeCreated()

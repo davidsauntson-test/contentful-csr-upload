@@ -3,12 +3,10 @@ import { useSelector } from "react-redux";
 import { getContentfulSuppliersNotInFile } from "../selectors";
 import { Box, Heading, Paragraph, Table } from "@contentful/f36-components";
 import { nanoid } from "nanoid";
+import { getType } from "../helpers/getType";
 
 const SuppliersNotInFile = () => {
   const suppliersNotInFile = useSelector(getContentfulSuppliersNotInFile);
-  const getType = (isSmall) => {
-    return isSmall ? "small" : "ranked";
-  };
 
   const renderSuppliersNotInFile = () => {
     return (
