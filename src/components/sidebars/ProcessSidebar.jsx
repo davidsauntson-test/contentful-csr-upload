@@ -38,15 +38,14 @@ const ProcessSidebar = () => {
         </Paragraph>
         <List>
           <ListItem>
-            <b>{suppliersInContentful.length}</b> suppliers will be updated and
-            set to
+            {suppliersInContentful.length} suppliers will be updated and set to
             <Badge as="span" variant="primary">
               Changed
             </Badge>
           </ListItem>
           <ListItem>
-            <b>{suppliersNotInContentful.length}</b> suppliers will be created
-            and set to
+            {suppliersNotInContentful.length} suppliers will be created and set
+            to
             <Badge as="span" variant="warning">
               Draft
             </Badge>
