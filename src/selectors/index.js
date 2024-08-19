@@ -20,3 +20,54 @@ export const getRankedSuppliers = createSelector(
   (state) => state.suppliers.value,
   (suppliers) => suppliers.filter((s) => !s.isSmall),
 );
+
+export const getMatchedSuppliersInContentful = createSelector(
+  [
+    (state) => state.suppliers.value,
+    (state) => state.contentfulSuppliers.value,
+  ],
+  (suppliers, contentfulSuppliers) => {
+    return suppliers
+      .map((s) => {
+        return {
+          supplier: s,
+          contentfulSupplier: contentfulSuppliers.find((cs) => cs.id === s.id),
+        };
+      })
+      .filter((pair) => pair.contentfulSupplier !== undefined);
+  },
+);
+
+export const getSuppliersNotInContentful = createSelector(
+  [
+    (state) => state.suppliers.value,
+    (state) => state.contentfulSuppliers.value,
+  ],
+  (suppliers, contentfulSuppliers) => {
+    return suppliers
+      .map((s) => {
+        return {
+          supplier: s,
+          contentfulSupplier: contentfulSuppliers.find((cs) => cs.id === s.id),
+        };
+      })
+      .filter((pair) => pair.contentfulSupplier === undefined);
+  },
+);
+
+export const getContentfulSuppliersNotInFile = createSelector(
+  [
+    (state) => state.suppliers.value,
+    (state) => state.contentfulSuppliers.value,
+  ],
+  (suppliers, contentfulSuppliers) => {
+    return contentfulSuppliers
+      .map((cs) => {
+        return {
+          supplier: suppliers.find((s) => s.id === cs.id),
+          contentfulSupplier: cs,
+        };
+      })
+      .filter((pair) => pair.supplier === undefined);
+  },
+);
