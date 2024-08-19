@@ -44,8 +44,8 @@ const SuppliersNotInFile = () => {
         renderSuppliersNotInFile()
       ) : (
         <Paragraph>
-          There are no suppliers in the spreadsheet that aren't already in
-          Contentful.
+          There are no suppliers already in Contentful that are missing from the
+          spreadsheet.
         </Paragraph>
       )}
     </Box>
