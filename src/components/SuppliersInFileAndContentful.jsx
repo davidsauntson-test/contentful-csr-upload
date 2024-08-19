@@ -10,8 +10,10 @@ import {
 } from "@contentful/f36-components";
 import { nanoid } from "nanoid";
 
-const SuppliersFoundInContentful = () => {
-  const matchedSuppliers = useSelector(getMatchedSuppliersInContentful);
+const SuppliersInFileAndContentful = () => {
+  const suppliersInFileAndContentful = useSelector(
+    getMatchedSuppliersInContentful,
+  );
 
   const getType = (isSmall) => {
     return isSmall ? "small" : "ranked";
@@ -37,7 +39,7 @@ const SuppliersFoundInContentful = () => {
             </Table.Row>
           </Table.Head>
           <Table.Body>
-            {matchedSuppliers.map((pair) => {
+            {suppliersInFileAndContentful.map((pair) => {
               return (
                 <Table.Row key={nanoid()}>
                   <Table.Cell>{pair.supplier.name}</Table.Cell>
@@ -55,7 +57,8 @@ const SuppliersFoundInContentful = () => {
   return (
     <Box marginTop="spacingXl" marginBottom="spacingXl">
       <Heading as="h2">Suppliers to be updated</Heading>
-      {matchedSuppliers && matchedSuppliers.length > 0 ? (
+      {suppliersInFileAndContentful &&
+      suppliersInFileAndContentful.length > 0 ? (
         renderMatchedSuppliers()
       ) : (
         <Paragraph>
@@ -66,4 +69,4 @@ const SuppliersFoundInContentful = () => {
   );
 };
 
-export default SuppliersFoundInContentful;
+export default SuppliersInFileAndContentful;

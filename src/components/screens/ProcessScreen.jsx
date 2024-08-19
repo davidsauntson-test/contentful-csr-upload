@@ -4,7 +4,9 @@ import { setAppStatus } from "../../state/appStatusSlice";
 import * as AppStatus from "../../constants/app-status";
 import { getPublishedSuppliers } from "../../ContentfulWrapper";
 import { addContentfulSupplier } from "../../state/contentfulSupplierSlice";
-import SuppliersFoundInContentful from "../SuppliersFoundInContentful";
+import SuppliersInFileAndContentful from "../SuppliersInFileAndContentful";
+import SuppliersNotInContentful from "../SuppliersNotInContentful";
+import SuppliersNotInFile from "../SuppliersNotInFile";
 
 const ProcessScreen = () => {
   const status = useSelector((state) => state.appStatus.value);
@@ -12,8 +14,6 @@ const ProcessScreen = () => {
 
   useEffect(() => {
     if (status === AppStatus.FETCHING_CONTENTFUL_SUPPLIERS) {
-      console.log("matching started");
-
       getPublishedSuppliers().then((suppliers) => {
         suppliers.items.forEach((s) => {
           dispatch(
@@ -21,19 +21,21 @@ const ProcessScreen = () => {
               contentfulId: s.sys.id,
               id: s.fields.supplierId["en-GB"].toString(),
               name: s.fields.name["en-GB"],
+              dataAvailable: s.fields.dataAvailable["en-GB"],
             }),
           );
         });
       });
 
       dispatch(setAppStatus(AppStatus.FETCHED_CONTENTFUL_SUPPLIERS));
-      console.log("matching finished");
     }
   }, [status, dispatch]);
 
   return (
     <React.Fragment>
-      <SuppliersFoundInContentful />
+      <SuppliersInFileAndContentful />
+      <SuppliersNotInContentful />
+      <SuppliersNotInFile />
     </React.Fragment>
   );
 };

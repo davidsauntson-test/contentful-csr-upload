@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import SuppliersFoundInContentful from "./SuppliersFoundInContentful";
+import SuppliersInFileAndContentful from "./SuppliersInFileAndContentful";
 import { within } from "@testing-library/react";
 import { renderWithProvider } from "../../test/utils/render-with-provider";
 
@@ -61,7 +61,7 @@ describe("SuppliersFoundInContentful component", () => {
   };
 
   const { getByRole, queryByText } = renderWithProvider(
-    <SuppliersFoundInContentful />,
+    <SuppliersInFileAndContentful />,
     { preloadedState: initialState },
   );
   const table = getByRole("table");
@@ -103,7 +103,7 @@ describe("SuppliersFoundInContentful component", () => {
   });
 
   it("does not render anything when there are no suppliers", () => {
-    const { screen } = renderWithProvider(<SuppliersFoundInContentful />);
+    const { screen } = renderWithProvider(<SuppliersInFileAndContentful />);
     expect(screen).toEqual(undefined);
   });
 });
