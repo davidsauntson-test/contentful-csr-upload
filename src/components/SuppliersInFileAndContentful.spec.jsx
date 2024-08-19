@@ -3,66 +3,20 @@ import { describe, expect, it } from "vitest";
 import SuppliersInFileAndContentful from "./SuppliersInFileAndContentful";
 import { within } from "@testing-library/react";
 import { renderWithProvider } from "../../test/utils/render-with-provider";
+import {
+  suppliers,
+  contentfulSuppliers,
+} from "../../test/fixtures/process-screen-state";
 
 describe("SuppliersFoundInContentful component", () => {
-  const suppliers = [
-    {
-      name: "I am a ranked supplier",
-      rank: "1",
-      overallRating: "4.9",
-      complaintsRatings: "3.9",
-      contactRating: "2.9",
-      guaranteeRating: "1.9",
-      id: "1",
-    },
-    {
-      name: "I am another supplier",
-      rank: "2",
-      overallRating: "3.9",
-      complaintsRatings: "2.9",
-      contactRating: "1.9",
-      guaranteeRating: "0.9",
-      id: "2",
-      isSmall: true,
-    },
-    {
-      name: "I am a supplier that is in the file but not Contentful",
-      rank: "2",
-      overallRating: "3.9",
-      complaintsRatings: "2.9",
-      contactRating: "1.9",
-      guaranteeRating: "0.9",
-      id: "9",
-      isSmall: true,
-    },
-  ];
-
-  const contentfulSuppliers = [
-    {
-      name: "I am a ranked supplier in Contentful",
-      id: "1",
-      contentfulId: "1234",
-    },
-    {
-      name: "I am another supplier in Contentful",
-      id: "2",
-      contentfulId: "5678",
-    },
-    {
-      name: "I am a Contentful supplier that isn't in the file",
-      id: "99",
-      contentfulId: "9101",
-    },
-  ];
-
-  const initialState = {
-    suppliers: { value: suppliers },
-    contentfulSuppliers: { value: contentfulSuppliers },
-  };
-
   const { getByRole, queryByText } = renderWithProvider(
     <SuppliersInFileAndContentful />,
-    { preloadedState: initialState },
+    {
+      preloadedState: {
+        suppliers: { value: suppliers },
+        contentfulSuppliers: { value: contentfulSuppliers },
+      },
+    },
   );
   const table = getByRole("table");
   const tbody = within(table).getAllByRole("rowgroup")[1]; // this is the table body
