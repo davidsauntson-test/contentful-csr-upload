@@ -18,7 +18,6 @@ const MatchSidebar = () => {
 
   const clickHandler = () => {
     dispatch(setAppStatus(AppStatus.FETCHING_CONTENTFUL_SUPPLIERS));
-    console.log("matching requested");
     dispatch(setScreen(PROCESS));
   };
 
