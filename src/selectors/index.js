@@ -10,3 +10,13 @@ export const getCanMatch = createSelector(
   (suppliers, errors, status) =>
     suppliers.length > 0 && errors.length === 0 && status === PARSING_FINISHED,
 );
+
+export const getSmallSuppliers = createSelector(
+  (state) => state.suppliers.value,
+  (suppliers) => suppliers.filter((s) => s.isSmall),
+);
+
+export const getRankedSuppliers = createSelector(
+  (state) => state.suppliers.value,
+  (suppliers) => suppliers.filter((s) => !s.isSmall),
+);
