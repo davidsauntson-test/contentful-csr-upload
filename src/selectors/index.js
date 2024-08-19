@@ -21,7 +21,7 @@ export const getRankedSuppliers = createSelector(
   (suppliers) => suppliers.filter((s) => !s.isSmall),
 );
 
-export const getSuppliersFoundInContentful = createSelector(
+export const getMatchedSuppliersInContentful = createSelector(
   [
     (state) => state.suppliers.value,
     (state) => state.contentfulSuppliers.value,
