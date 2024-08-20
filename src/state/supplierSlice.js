@@ -14,10 +14,17 @@ export const suppliersSlice = createSlice({
     resetSuppliers: (state, action) => {
       state.value = [];
     },
+    setSupplierStatus: (state, action) => {
+      const { supplierId, status } = action.payload;
+
+      const supplier = state.value.find((s) => s.id === supplierId);
+      supplier.status = status;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addSupplier, resetSuppliers } = suppliersSlice.actions;
+export const { addSupplier, resetSuppliers, setSupplierStatus } =
+  suppliersSlice.actions;
 
 export default suppliersSlice.reducer;
