@@ -1,26 +1,31 @@
 import React from "react";
 import SuppliersToBeUpdated from "../SuppliersToBeUpdated";
 import { useDispatch, useSelector } from "react-redux";
-import { getMatchedSuppliersInContentful } from "../../selectors";
+import {
+  getMatchedSuppliersInContentful,
+  getSuppliersNotInContentful,
+} from "../../selectors";
 import { useEffect } from "react";
 import {
   PROCESSED_SUPPLEIRS,
   PROCESSING_SUPPLIERS,
 } from "../../constants/app-status";
-import { updateSupplier } from "../../ContentfulWrapper";
-import { setSupplierStatus } from "../../state/supplierSlice";
+import { updateSupplier, createSupplier } from "../../ContentfulWrapper";
+import { setSupplier } from "../../state/supplierSlice";
 import {
   CONTENTFUL_PUT_ERROR,
   TO_BE_PUBLISHED,
 } from "../../constants/supplier-status";
 import { setAppStatus } from "../../state/appStatusSlice";
 import { Box, Heading, Paragraph, Table } from "@contentful/f36-components";
+import SuppliersToBeCreated from "../SuppliersToBeCreated";
 
 const ScheduleScreen = () => {
   const dispatch = useDispatch();
   const status = useSelector((state) => state.appStatus.value);
 
   const suppliersToBeUpdated = useSelector(getMatchedSuppliersInContentful);
+  const suppliersToBeCreated = useSelector(getSuppliersNotInContentful);
 
   useEffect(() => {
     if (status === PROCESSING_SUPPLIERS) {
@@ -28,7 +33,7 @@ const ScheduleScreen = () => {
         updateSupplier(pair)
           .then(() => {
             dispatch(
-              setSupplierStatus({
+              setSupplier({
                 supplierId: pair.supplier.id,
                 status: TO_BE_PUBLISHED,
               }),
@@ -36,17 +41,41 @@ const ScheduleScreen = () => {
           })
           .catch(() =>
             dispatch(
-              setSupplierStatus({
+              setSupplier({
                 supplierId: pair.supplier.id,
                 status: CONTENTFUL_PUT_ERROR,
               }),
             ),
           );
       });
+      console.log("update done");
+
+      suppliersToBeCreated.forEach(async (pair) => {
+        createSupplier(pair)
+          .then((result) => {
+            console.log(result);
+            dispatch(
+              setSupplier({
+                supplierId: pair.supplier.id,
+                newContentfulId: result.sys.id,
+                status: TO_BE_PUBLISHED,
+              }),
+            );
+          })
+          .catch((error) => {
+            dispatch(
+              setSupplier({
+                supplierId: pair.supplier.id,
+                status: CONTENTFUL_PUT_ERROR,
+              }),
+            );
+          });
+      });
+      console.log("create done");
 
       dispatch(setAppStatus(PROCESSED_SUPPLEIRS));
     }
-  }, [suppliersToBeUpdated, dispatch, status]);
+  }, [suppliersToBeCreated, suppliersToBeUpdated, dispatch, status]);
 
   return (
     <Box marginTop="spacingXl" marginBottom="spacingXl">
@@ -62,12 +91,12 @@ const ScheduleScreen = () => {
             <Table.Cell>Action</Table.Cell>
             <Table.Cell>Current Status</Table.Cell>
             <Table.Cell>Status after events</Table.Cell>
-            <Table.Cell>Last changed by</Table.Cell>
             <Table.Cell>Result</Table.Cell>
           </Table.Row>
         </Table.Head>
         <Table.Body>
           <SuppliersToBeUpdated />
+          <SuppliersToBeCreated />
         </Table.Body>
       </Table>
     </Box>
