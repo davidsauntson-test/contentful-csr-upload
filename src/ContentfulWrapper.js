@@ -61,6 +61,8 @@ const updateContentfulSupplierFields = (supplier, contentfulSupplier) => {
 
   // association to whitelabel supplier will be done in a separate PR
   // contentfulSupplier.fields.whitelabelSupplier = { 'en-GB': supplier.whiteLabelSupplierId };
+
+  // need to update the slug also??
 };
 
 export { getPublishedSuppliers, updateSupplier };
