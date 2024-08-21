@@ -8,7 +8,11 @@ const LoadingTableCell = ({ status, children }) => {
   return (
     <Table.Cell>
       {status === PARSED ? (
-        <Skeleton.Container svgHeight="20px" svgWidth="100px">
+        <Skeleton.Container
+          svgHeight="20px"
+          svgWidth="100px"
+          ariaLabel="Loading..."
+        >
           <Skeleton.DisplayText />
         </Skeleton.Container>
       ) : (
