@@ -7,6 +7,7 @@ import UploadSidebar from "../components/sidebars/UploadSidebar";
 import MatchScreen from "../components/screens/MatchScreen";
 import MatchSidebar from "../components/sidebars/MatchSidebar";
 import ProcessScreen from "../components/screens/ProcessScreen";
+import ProcessSidebar from "../components/sidebars/ProcessSidebar";
 
 const Page = () => {
   const screen = useSelector((state) => state.screen.value);
@@ -30,6 +31,8 @@ const Page = () => {
         return <UploadSidebar></UploadSidebar>;
       case Screens.MATCH:
         return <MatchSidebar></MatchSidebar>;
+      case Screens.PROCESS:
+        return <ProcessSidebar></ProcessSidebar>;
     }
   };
 
