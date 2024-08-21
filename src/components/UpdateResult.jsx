@@ -7,7 +7,12 @@ const UpdateResult = ({ status }) => {
     default:
       return <MissingContent />;
     case SupplierStatus.TO_BE_PUBLISHED:
-      return <DoneIcon variant="positive" />;
+      return (
+        <Stack flexDirection="row" alignItems="center">
+          <DoneIcon variant="positive" />
+          <TextLink variant="positive">OK</TextLink>
+        </Stack>
+      );
     case SupplierStatus.CONTENTFUL_PUT_ERROR:
       return (
         <Stack flexDirection="row" alignItems="center">
