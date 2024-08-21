@@ -12,8 +12,8 @@
     },
     "1098583|@contentful/app-scripts>contentful-management>axios": {
       "decision": "ignore",
-      "madeAt": 1723620443927,
-      "expiresAt": 1724225197471
+      "madeAt": 1724228180450,
+      "expiresAt": 1724832931837
     }
   },
   "rules": {},
