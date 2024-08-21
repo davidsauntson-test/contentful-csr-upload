@@ -7,7 +7,7 @@ import {
 } from "../../selectors";
 import { useEffect } from "react";
 import {
-  PROCESSED_SUPPLEIRS,
+  PROCESSED_SUPPLIERS,
   PROCESSING_SUPPLIERS,
 } from "../../constants/app-status";
 import { updateSupplier, createSupplier } from "../../ContentfulWrapper";
@@ -19,6 +19,7 @@ import {
 import { setAppStatus } from "../../state/appStatusSlice";
 import { Box, Heading, Paragraph, Table } from "@contentful/f36-components";
 import SuppliersToBeCreated from "../SuppliersToBeCreated";
+import SuppliersToBeUnpublished from "../SuppliersToBeUnpublished";
 
 const ScheduleScreen = () => {
   const dispatch = useDispatch();
@@ -48,7 +49,6 @@ const ScheduleScreen = () => {
             ),
           );
       });
-      console.log("update done");
 
       suppliersToBeCreated.forEach(async (pair) => {
         createSupplier(pair)
@@ -62,7 +62,7 @@ const ScheduleScreen = () => {
               }),
             );
           })
-          .catch((error) => {
+          .catch(() => {
             dispatch(
               setSupplier({
                 supplierId: pair.supplier.id,
@@ -71,9 +71,8 @@ const ScheduleScreen = () => {
             );
           });
       });
-      console.log("create done");
 
-      dispatch(setAppStatus(PROCESSED_SUPPLEIRS));
+      dispatch(setAppStatus(PROCESSED_SUPPLIERS));
     }
   }, [suppliersToBeCreated, suppliersToBeUpdated, dispatch, status]);
 
@@ -99,6 +98,7 @@ const ScheduleScreen = () => {
           <SuppliersToBeCreated />
         </Table.Body>
       </Table>
+      <SuppliersToBeUnpublished />
     </Box>
   );
 };
