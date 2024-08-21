@@ -1,15 +1,7 @@
-import {
-  EntityStatusBadge,
-  Paragraph,
-  Table,
-  TextLink,
-} from "@contentful/f36-components";
+import { EntityStatusBadge, Table, TextLink } from "@contentful/f36-components";
 import { nanoid } from "nanoid";
 import { useSelector } from "react-redux";
-import {
-  getMatchedSuppliersInContentful,
-  getSuppliersNotInContentful,
-} from "../selectors";
+import { getSuppliersNotInContentful } from "../selectors";
 import React from "react";
 import LoadingTableCell from "./LoadingTableCell";
 import { useSDK } from "@contentful/react-apps-toolkit";
@@ -36,7 +28,7 @@ const SuppliersToBeCreated = () => {
           </LoadingTableCell>
           <LoadingTableCell status={pair.supplier.status}>
             <EntityStatusBadge entityStatus="published" />
-          </LoadingTableCell>{" "}
+          </LoadingTableCell>
           <Table.Cell>
             <TextLink
               onClick={() =>
