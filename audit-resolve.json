@@ -1,14 +1,29 @@
 {
   "decisions": {
-    "1098582|@contentful/app-scripts>contentful-management>axios": {
+    "1098615|@typescript-eslint/eslint-plugin>@typescript-eslint/parser>@typescript-eslint/typescript-estree>globby>fast-glob>micromatch": {
       "decision": "ignore",
-      "madeAt": 1723545683541,
-      "expiresAt": 1724150451234
+      "madeAt": 1724326296868,
+      "expiresAt": 1724931087812
     },
-    "1098582|contentful-management>axios": {
+    "1098615|@typescript-eslint/experimental-utils>@typescript-eslint/utils>@typescript-eslint/typescript-estree>globby>fast-glob>micromatch": {
       "decision": "ignore",
-      "madeAt": 1723545683541,
-      "expiresAt": 1724150451234
+      "madeAt": 1724326296868,
+      "expiresAt": 1724931087812
+    },
+    "1098615|eslint-config-react-app>@typescript-eslint/parser>@typescript-eslint/typescript-estree>globby>fast-glob>micromatch": {
+      "decision": "ignore",
+      "madeAt": 1724326296868,
+      "expiresAt": 1724931087812
+    },
+    "1098615|eslint-plugin-testing-library>@typescript-eslint/utils>@typescript-eslint/typescript-estree>globby>fast-glob>micromatch": {
+      "decision": "ignore",
+      "madeAt": 1724326296868,
+      "expiresAt": 1724931087812
+    },
+    "1098615|lint-staged>micromatch": {
+      "decision": "ignore",
+      "madeAt": 1724326296868,
+      "expiresAt": 1724931087812
     }
   },
   "rules": {},
