@@ -1,4 +1,5 @@
 import * as contentful from "contentful-management";
+import mapSupplierToContentfulFields from "./helpers/mapSupplierToContentfulFields";
 
 const getPublishedSuppliers = async () => {
   const client = contentful.createClient({
@@ -30,7 +31,7 @@ const updateSupplier = async (pair) => {
     pair.contentfulSupplier.contentfulId,
   );
 
-  updateContentfulSupplierFields(pair.supplier, contentfulSupplier);
+  mapSupplierToContentfulFields(pair.supplier, contentfulSupplier);
 
   return contentfulSupplier.update();
 };
@@ -49,54 +50,9 @@ const createSupplier = async (pair) => {
     import.meta.env.VITE_REACT_APP_CONTENTFUL_ENV,
   );
 
-  const supplierData = {
-    fields: {
-      name: null,
-      rank: null,
-      complaintsNumber: null,
-      complaintsRating: null,
-      dataAvailable: null,
-      overallRating: null,
-      contactEmail: null,
-      contactRating: null,
-      guaranteeRating: null,
-      supplierId: { "en-GB": parseInt(pair.supplier.id, 10) },
-    },
-  };
+  const contentfulFields = mapSupplierToContentfulFields(pair.supplier);
 
-  updateContentfulSupplierFields(pair.supplier, supplierData);
-
-  return env.createEntry("energySupplier", supplierData);
-};
-
-const updateContentfulSupplierFields = (supplier, contentfulSupplier) => {
-  contentfulSupplier.fields.name = { "en-GB": supplier.name };
-  contentfulSupplier.fields.rank = { "en-GB": supplier.rank };
-  contentfulSupplier.fields.complaintsNumber = {
-    "en-GB": supplier.complaintsNumber,
-  };
-  contentfulSupplier.fields.complaintsRating = {
-    "en-GB": supplier.complaintsRatings,
-  };
-  contentfulSupplier.fields.dataAvailable = { "en-GB": !supplier.isSmall };
-  contentfulSupplier.fields.overallRating = { "en-GB": supplier.overallRating };
-  contentfulSupplier.fields.contactEmail = { "en-GB": supplier.contactEmail };
-  contentfulSupplier.fields.contactRating = { "en-GB": supplier.contactRating };
-  contentfulSupplier.fields.guaranteeRating = {
-    "en-GB": supplier.guaranteeRating,
-  };
-
-  // Markdown fields will be done in a separate PR
-  // contentfulSupplier.fields.contactInfo = { 'en-GB': supplier.contactInfo };
-  // contentfulSupplier.fields.billingInfo = { 'en-GB': supplier.billingInfo };
-  // contentfulSupplier.fields.fuelMix = { 'en-GB': supplier.fuelMix };
-  // contentfulSupplier.fields.guaranteeList = { 'en-GB': supplier.guaranteeList };
-  // contentfulSupplier.fields.openingHours = { 'en-GB': supplier.openingHours };
-
-  // association to whitelabel supplier will be done in a separate PR
-  // contentfulSupplier.fields.whitelabelSupplier = { 'en-GB': supplier.whiteLabelSupplierId };
-
-  // need to update the slug also??
+  return env.createEntry("energySupplier", contentfulFields);
 };
 
 export { getPublishedSuppliers, updateSupplier, createSupplier };
