@@ -3,7 +3,7 @@ import Papa from "papaparse";
 import { FormControl, TextInput } from "@contentful/f36-components";
 import { useDispatch } from "react-redux";
 
-import normalizeSupplier from "../helpers/normalizeSupplier";
+import createSupplierFromTsv from "../helpers/createSupplierFromTsv";
 import { addSupplier, resetSuppliers } from "../state/supplierSlice";
 import { setErrors, resetErrors } from "../state/uploadErrorsSlice";
 import { setAppStatus } from "../state/appStatusSlice";
@@ -22,7 +22,7 @@ const UploadFile = () => {
       delimiter: "\t",
       complete: (results) => {
         results.data.forEach((row) => {
-          const supplier = normalizeSupplier(row);
+          const supplier = createSupplierFromTsv(row);
           dispatch(addSupplier(supplier));
         });
 

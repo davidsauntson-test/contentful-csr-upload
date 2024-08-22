@@ -1,6 +1,6 @@
 import { PARSED } from "../constants/supplier-status";
 
-const normalizeSupplier = (row) => {
+const createSupplierFromTsv = (row) => {
   return {
     id: row["SupplierId"],
     name: row["supplierName"],
@@ -28,4 +28,4 @@ const isSmall = (dataAvailable) => {
   return dataAvailable === "FALSE";
 };
 
-export default normalizeSupplier;
+export default createSupplierFromTsv;
