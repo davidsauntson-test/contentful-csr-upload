@@ -53,7 +53,6 @@ const ScheduleScreen = () => {
       suppliersToBeCreated.forEach(async (pair) => {
         createSupplier(pair)
           .then((result) => {
-            console.log(result);
             dispatch(
               setSupplier({
                 supplierId: pair.supplier.id,
