@@ -40,19 +40,21 @@ const ScheduleScreen = () => {
               }),
             );
           })
-          .catch(() =>
+          .catch((error) => {
             dispatch(
               setSupplier({
                 supplierId: pair.supplier.id,
                 status: CONTENTFUL_PUT_ERROR,
               }),
-            ),
-          );
+            );
+            console.error(error.message);
+          });
       });
 
       suppliersToBeCreated.forEach((pair) => {
         createSupplier(pair)
           .then((result) => {
+            console.log(result);
             dispatch(
               setSupplier({
                 supplierId: pair.supplier.id,
@@ -61,13 +63,14 @@ const ScheduleScreen = () => {
               }),
             );
           })
-          .catch(() => {
+          .catch((error) => {
             dispatch(
               setSupplier({
                 supplierId: pair.supplier.id,
                 status: CONTENTFUL_PUT_ERROR,
               }),
             );
+            console.error(error.message);
           });
       });
 
