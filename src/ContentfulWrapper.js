@@ -37,9 +37,6 @@ const updateSupplier = async (pair) => {
 };
 
 const createSupplier = async (pair) => {
-  console.log("creating supplier");
-  console.log(pair.supplier.id);
-
   const client = contentful.createClient({
     accessToken: import.meta.env.VITE_REACT_APP_CMA_TOKEN,
   });
