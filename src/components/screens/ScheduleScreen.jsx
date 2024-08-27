@@ -30,7 +30,7 @@ const ScheduleScreen = () => {
 
   useEffect(() => {
     if (status === PROCESSING_SUPPLIERS) {
-      suppliersToBeUpdated.forEach(async (pair) => {
+      suppliersToBeUpdated.forEach((pair) => {
         updateSupplier(pair)
           .then(() => {
             dispatch(
@@ -50,7 +50,7 @@ const ScheduleScreen = () => {
           );
       });
 
-      suppliersToBeCreated.forEach(async (pair) => {
+      suppliersToBeCreated.forEach((pair) => {
         createSupplier(pair)
           .then((result) => {
             dispatch(
