@@ -45,7 +45,6 @@ export const expectedFields = {
           ],
           data: {},
         },
-        { nodeType: "text", marks: [], value: "\n", data: {} },
       ],
     },
   },
@@ -72,7 +71,6 @@ export const expectedFields = {
           ],
           data: {},
         },
-        { nodeType: "text", marks: [], value: "\n", data: {} },
       ],
     },
   },
@@ -93,7 +91,6 @@ export const expectedFields = {
           ],
           data: {},
         },
-        { nodeType: "text", marks: [], value: "\n", data: {} },
         {
           nodeType: "paragraph",
           content: [
@@ -101,7 +98,6 @@ export const expectedFields = {
           ],
           data: {},
         },
-        { nodeType: "text", marks: [], value: "\n", data: {} },
         {
           nodeType: "paragraph",
           content: [
@@ -109,7 +105,6 @@ export const expectedFields = {
           ],
           data: {},
         },
-        { nodeType: "text", marks: [], value: "\n", data: {} },
         {
           nodeType: "paragraph",
           content: [
@@ -117,7 +112,6 @@ export const expectedFields = {
           ],
           data: {},
         },
-        { nodeType: "text", marks: [], value: "\n", data: {} },
       ],
     },
   },
@@ -144,7 +138,20 @@ export const expectedFields = {
                 {
                   nodeType: "text",
                   marks: [],
-                  value: "guarantee 2\n-guarantee 3",
+                  value: "guarantee 2",
+                  data: {},
+                },
+              ],
+              data: {},
+            },
+            { nodeType: "text", marks: [], value: "\n", data: {} },
+            {
+              nodeType: "list-item",
+              content: [
+                {
+                  nodeType: "text",
+                  marks: [],
+                  value: "guarantee 3",
                   data: {},
                 },
               ],
@@ -154,7 +161,6 @@ export const expectedFields = {
           ],
           data: {},
         },
-        { nodeType: "text", marks: [], value: "\n", data: {} },
       ],
     },
   },
@@ -176,7 +182,6 @@ export const expectedFields = {
           ],
           data: {},
         },
-        { nodeType: "text", marks: [], value: "\n", data: {} },
       ],
     },
   },

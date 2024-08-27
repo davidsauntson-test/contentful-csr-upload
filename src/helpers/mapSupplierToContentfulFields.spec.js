@@ -18,7 +18,7 @@ const testSupplier = {
   contactEmail: Number(99.3),
   contactSocialMedia: "99,000",
   guaranteeRating: Number("4.32"),
-  guaranteeList: "- guarantee 1\n- guarantee 2\n-guarantee 3",
+  guaranteeList: "- guarantee 1\n- guarantee 2\n- guarantee 3",
   contactInfo:
     "[01234 5678910](tel:012345678910)\n[www.example.com](https://www.example.com)",
   billingInfo: "[billing@example.com](mailto:billing@example.com)",
@@ -43,6 +43,27 @@ describe("mapSupplierToContentfulFields", () => {
   it("creates the correct fields if no entry is passed", () => {
     expect(mapSupplierToContentfulFields(testSupplier).fields).toEqual(
       expectedFields,
+    );
+  });
+
+  it("does not create text nodes at the top level of the content JSON", () => {
+    const supplier = mapSupplierToContentfulFields(testSupplier);
+    const content = supplier.fields.billingInfo["en-GB"].content;
+    const topLevelTextNodes = content.filter(
+      (node) => node.nodeType === "text",
+    );
+    expect(topLevelTextNodes.length).toEqual(0);
+  });
+
+  it("handles empty supplier fields", () => {
+    let supplier = testSupplier;
+    supplier.billingInfo = undefined;
+
+    let expectedSupplierFields = expectedFields;
+    expectedSupplierFields.billingInfo["en-GB"] = undefined;
+
+    expect(mapSupplierToContentfulFields(supplier).fields).toEqual(
+      expectedSupplierFields,
     );
   });
 });
