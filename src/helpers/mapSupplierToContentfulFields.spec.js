@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 
 import mapSupplierToContentfulFields from "./mapSupplierToContentfulFields";
 import { PARSED } from "../constants/supplier-status";
-import { expectedFields } from "./contentful-supplier";
+import { expectedFields } from "../../test/fixtures/contentful-supplier";
 
 const testSupplier = {
   id: 1,
