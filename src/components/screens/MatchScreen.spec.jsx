@@ -9,14 +9,17 @@ describe("MatchScreen component", () => {
     {
       name: "I am a ranked supplier",
       isSmall: false,
+      id: 1,
     },
     {
       name: "I am another ranked supplier",
       isSmall: false,
+      id: 2,
     },
     {
       name: "I am a small supplier",
       isSmall: true,
+      id: 3,
     },
   ];
 

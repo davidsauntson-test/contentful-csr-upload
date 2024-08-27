@@ -6,7 +6,6 @@ import {
   Table,
   TextLink,
 } from "@contentful/f36-components";
-import { nanoid } from "nanoid";
 import { useSelector } from "react-redux";
 import { getContentfulSuppliersNotInFile } from "../selectors";
 import React from "react";
@@ -43,7 +42,7 @@ const SuppliersToBeUnpublished = () => {
         <Table.Body>
           {suppliersToBeUnpublished.map((pair) => {
             return (
-              <Table.Row key={nanoid()}>
+              <Table.Row key={pair.contentfulSupplier.contentfulId}>
                 <Table.Cell>{pair.contentfulSupplier.name}</Table.Cell>
                 <Table.Cell>
                   <EntityStatusBadge entityStatus="published" />

@@ -1,5 +1,4 @@
 import { EntityStatusBadge, Table, TextLink } from "@contentful/f36-components";
-import { nanoid } from "nanoid";
 import { useSelector } from "react-redux";
 import { getMatchedSuppliersInContentful } from "../selectors";
 import React from "react";
@@ -18,7 +17,7 @@ const SuppliersToBeUpdated = () => {
   return (
     <React.Fragment>
       {suppliersToBeUpdated.map((pair) => (
-        <Table.Row key={nanoid()}>
+        <Table.Row key={pair.supplier.id}>
           <Table.Cell>{pair.supplier.name}</Table.Cell>
           <LoadingTableCell status={pair.supplier.status}>
             <UpdateResult status={pair.supplier.status} />

@@ -1,5 +1,4 @@
 import { EntityStatusBadge, Table, TextLink } from "@contentful/f36-components";
-import { nanoid } from "nanoid";
 import { useSelector } from "react-redux";
 import { getSuppliersNotInContentful } from "../selectors";
 import React from "react";
@@ -18,7 +17,7 @@ const SuppliersToBeCreated = () => {
   return (
     <React.Fragment>
       {suppliersToBeCreated.map((pair) => (
-        <Table.Row key={nanoid()}>
+        <Table.Row key={pair.supplier.name}>
           <Table.Cell>{pair.supplier.name}</Table.Cell>
           <LoadingTableCell status={pair.supplier.status}>
             <UpdateResult status={pair.supplier.status} />
