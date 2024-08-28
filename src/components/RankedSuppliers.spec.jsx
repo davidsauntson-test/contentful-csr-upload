@@ -12,6 +12,7 @@ describe("RankedSuppliers component", () => {
       complaintsRatings: "3.9",
       contactRating: "2.9",
       guaranteeRating: "1.9",
+      id: 1,
     },
     {
       name: "I am another ranked supplier",
@@ -20,6 +21,7 @@ describe("RankedSuppliers component", () => {
       complaintsRatings: "2.9",
       contactRating: "1.9",
       guaranteeRating: "0.9",
+      id: 2,
     },
   ];
 

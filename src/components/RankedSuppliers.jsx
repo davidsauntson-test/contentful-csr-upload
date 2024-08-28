@@ -1,6 +1,5 @@
 import React from "react";
 import { Box, Heading, Table } from "@contentful/f36-components";
-import { nanoid } from "nanoid";
 
 const RankedSuppliers = ({ suppliers }) => {
   if (suppliers.length === 0) {
@@ -23,7 +22,7 @@ const RankedSuppliers = ({ suppliers }) => {
         <Table.Body>
           {suppliers.map((s) => {
             return (
-              <Table.Row key={nanoid()}>
+              <Table.Row key={s.id}>
                 <Table.Cell>{s.name}</Table.Cell>
                 <Table.Cell>{s.rank}</Table.Cell>
                 <Table.Cell>{s.overallRating}</Table.Cell>

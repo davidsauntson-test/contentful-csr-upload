@@ -1,20 +1,20 @@
 import { PARSED } from "../constants/supplier-status";
 
-const normalizeSupplier = (row) => {
+const createSupplierFromTsv = (row) => {
   return {
     id: row["SupplierId"],
     name: row["supplierName"],
     whiteLabelId: row["whiteLabelId"],
     isSmall: isSmall(row["dataAvailable"]),
-    rank: row["supplierRank"],
-    overallRating: row["overallRating"],
-    complaintsRatings: row["complaintsRating"],
-    complaintsNumber: row["complaintsNumber"],
-    contactRating: row["contactRating"],
+    rank: parseInt(row["supplierRank"], 10),
+    overallRating: Number(row["overallRating"]),
+    complaintsRatings: parseInt(row["complaintsRating"], 10),
+    complaintsNumber: Number(row["complaintsNumber"]),
+    contactRating: Number(row["contactRating"], 10),
     contactTime: row["contactTime"],
-    contactEmail: row["contactEmail%"],
+    contactEmail: Number(row["contactEmail%"], 10),
     contactSocialMedia: row["contactSocialMedia"],
-    guaranteeRating: row["guaranteeRating"],
+    guaranteeRating: Number(row["guaranteeRating"], 10),
     guaranteesList: row["guaranteesList"],
     contactInfo: row["contactInformation"],
     billingInfo: row["billingInformation"],
@@ -28,4 +28,4 @@ const isSmall = (dataAvailable) => {
   return dataAvailable === "FALSE";
 };
 
-export default normalizeSupplier;
+export default createSupplierFromTsv;

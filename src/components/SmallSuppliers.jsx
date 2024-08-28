@@ -1,5 +1,4 @@
 import React from "react";
-import { nanoid } from "nanoid";
 import { Box, Heading, List, ListItem } from "@contentful/f36-components";
 
 const SmallSuppliers = ({ suppliers }) => {
@@ -11,7 +10,7 @@ const SmallSuppliers = ({ suppliers }) => {
       <Heading as="h3">Small Suppliers ({suppliers.length})</Heading>
       <List>
         {suppliers.map((s) => (
-          <ListItem key={nanoid()}>{s.name}</ListItem>
+          <ListItem key={s.id}>{s.name}</ListItem>
         ))}
       </List>
     </Box>

@@ -2,7 +2,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { getContentfulSuppliersNotInFile } from "../selectors";
 import { Box, Heading, Paragraph, Table } from "@contentful/f36-components";
-import { nanoid } from "nanoid";
 import { getType } from "../helpers/getType";
 
 const SuppliersNotInFile = () => {
@@ -20,7 +19,7 @@ const SuppliersNotInFile = () => {
         <Table.Body>
           {suppliersNotInFile.map((pair) => {
             return (
-              <Table.Row key={nanoid()}>
+              <Table.Row key={pair.contentfulSupplier.name}>
                 <Table.Cell>{pair.contentfulSupplier.name}</Table.Cell>
                 <Table.Cell>
                   {getType(!pair.contentfulSupplier.dataAvailable)}

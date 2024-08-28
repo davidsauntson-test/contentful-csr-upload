@@ -1,5 +1,4 @@
 import React from "react";
-import { nanoid } from "nanoid";
 import { List, ListItem, Paragraph } from "@contentful/f36-components";
 
 const UploadErrors = ({ errors }) => {
@@ -10,7 +9,7 @@ const UploadErrors = ({ errors }) => {
       </Paragraph>
       <List>
         {errors.map((error) => (
-          <ListItem key={nanoid()}>{error}</ListItem>
+          <ListItem key={error}>{error}</ListItem>
         ))}
       </List>
     </React.Fragment>

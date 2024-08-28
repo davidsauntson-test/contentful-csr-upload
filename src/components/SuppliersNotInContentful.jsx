@@ -8,7 +8,6 @@ import {
   Paragraph,
   Table,
 } from "@contentful/f36-components";
-import { nanoid } from "nanoid";
 import { getType } from "../helpers/getType";
 
 const SuppliersNotInContentful = () => {
@@ -26,7 +25,7 @@ const SuppliersNotInContentful = () => {
         <Table.Body>
           {suppliersNotInContentful.map((pair) => {
             return (
-              <Table.Row key={nanoid()}>
+              <Table.Row key={pair.supplier.id}>
                 <Table.Cell>{pair.supplier.name}</Table.Cell>
                 <Table.Cell>{getType(pair.supplier.isSmall)}</Table.Cell>
               </Table.Row>

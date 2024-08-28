@@ -7,9 +7,11 @@ describe("SmallSuppliers component", () => {
   const suppliers = [
     {
       name: "I am a small supplier",
+      id: 1,
     },
     {
       name: "I am another small supplier",
+      id: 2,
     },
   ];
 
