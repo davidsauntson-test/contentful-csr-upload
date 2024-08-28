@@ -1,4 +1,3 @@
-import * as contentful from "contentful-management";
 import mapSupplierToContentfulFields from "./helpers/mapSupplierToContentfulFields";
 
 const getPublishedSuppliers = async (cma) => {

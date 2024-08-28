@@ -34,7 +34,7 @@ const ProcessScreen = () => {
 
       dispatch(setAppStatus(AppStatus.FETCHED_CONTENTFUL_SUPPLIERS));
     }
-  }, [status, dispatch]);
+  }, [status, dispatch, cma]);
 
   return (
     <React.Fragment>

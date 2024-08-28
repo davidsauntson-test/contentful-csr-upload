@@ -82,7 +82,7 @@ const ScheduleScreen = () => {
 
       dispatch(setAppStatus(PROCESSED_SUPPLIERS));
     }
-  }, [suppliersToBeCreated, suppliersToBeUpdated, dispatch, status]);
+  }, [suppliersToBeCreated, suppliersToBeUpdated, dispatch, status, cma]);
 
   return (
     <Box marginTop="spacingXl" marginBottom="spacingXl">
