@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest";
 
 import mapSupplierToContentfulFields from "./mapSupplierToContentfulFields";
 import { PARSED } from "../constants/supplier-status";
+import { expectedFields } from "./contentful-supplier";
 
 const testSupplier = {
   id: 1,
@@ -17,26 +18,14 @@ const testSupplier = {
   contactEmail: Number(99.3),
   contactSocialMedia: "99,000",
   guaranteeRating: Number("4.32"),
-  guaranteesList: "- guarantee 1\n- gurantee 2\n-guarantee 3",
-  contactInfo: "[01234 5678910](tel:012345678910)",
+  guaranteeList: "- guarantee 1\n- guarantee 2\n-guarantee 3",
+  contactInfo:
+    "[01234 5678910](tel:012345678910)\n[www.example.com](https://www.example.com)",
   billingInfo: "[billing@example.com](mailto:billing@example.com)",
   openingHours:
-    "[www.example.com/opening-hours](https://www.example.com/opening-hours)",
-  fuelMix: "fuel mix",
+    "Monday: 9am - 5pm,\nTuesday: 9am - 5pm,\nWednesday: 9am - 5pm,\nThursday: 9am - 5pm,\nFriday: 9am - 5pm,\nSaturday: Closed,\nSunday: Closed",
+  fuelMix: "Fossil fuel: 55%,\n\rNuclear: 11%,\n\rRenewable: 29%,\n\rOther: 4%",
   status: PARSED,
-};
-
-const expectedFields = {
-  name: { "en-GB": "test supplier" },
-  rank: { "en-GB": 99 },
-  complaintsNumber: { "en-GB": 3 },
-  complaintsRating: { "en-GB": 3 },
-  dataAvailable: { "en-GB": true },
-  overallRating: { "en-GB": 3.5 },
-  contactEmail: { "en-GB": 99.3 },
-  contactRating: { "en-GB": 3 },
-  guaranteeRating: { "en-GB": 4.32 },
-  supplierId: { "en-GB": 1 },
 };
 
 describe("mapSupplierToContentfulFields", () => {
