@@ -1,3 +1,5 @@
+import markdownToJson from "./markdownToJson";
+
 const emptyContentfulSupplier = {
   fields: {
     name: null,
@@ -10,6 +12,11 @@ const emptyContentfulSupplier = {
     contactRating: null,
     guaranteeRating: null,
     supplierId: null,
+    contactInfo: null,
+    billingInfo: null,
+    fuelMix: null,
+    guaranteeList: null,
+    openingHours: null,
   },
 };
 
@@ -32,20 +39,28 @@ const mapSupplierToContentfulFields = (
   contentfulSupplier.fields.guaranteeRating = {
     "en-GB": supplier.guaranteeRating,
   };
-  contentfulSupplier.fields.supplierId = { "en-GB": supplier.id };
+  contentfulSupplier.fields.supplierId = { "en-GB": parseInt(supplier.id, 10) };
+  contentfulSupplier.fields.contactInfo = {
+    "en-GB": markdownToJson(supplier.contactInfo),
+  };
+  contentfulSupplier.fields.billingInfo = {
+    "en-GB": markdownToJson(supplier.billingInfo),
+  };
+  contentfulSupplier.fields.fuelMix = {
+    "en-GB": markdownToJson(supplier.fuelMix),
+  };
+  contentfulSupplier.fields.guaranteeList = {
+    "en-GB": markdownToJson(supplier.guaranteeList),
+  };
+  contentfulSupplier.fields.openingHours = {
+    "en-GB": markdownToJson(supplier.openingHours),
+  };
 
   return contentfulSupplier;
 };
 
 // TODO:
 // Slug field needs updating / setting
-
-// Markdown fields will be done in a separate PR
-// contentfulSupplier.fields.contactInfo = { 'en-GB': supplier.contactInfo };
-// contentfulSupplier.fields.billingInfo = { 'en-GB': supplier.billingInfo };
-// contentfulSupplier.fields.fuelMix = { 'en-GB': supplier.fuelMix };
-// contentfulSupplier.fields.guaranteeList = { 'en-GB': supplier.guaranteeList };
-// contentfulSupplier.fields.openingHours = { 'en-GB': supplier.openingHours };
 
 // association to whitelabel supplier will be done in a separate PR
 // contentfulSupplier.fields.whitelabelSupplier = { 'en-GB': supplier.whiteLabelSupplierId };
